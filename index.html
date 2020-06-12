@@ -11,7 +11,9 @@
     <div id="app">
         <p>現在{{number}}回クリックされています</p>
         <button v-on:click="countUp(3)">CountUp</button>
-        <p v-on:mousemove="changeMousePotision(3, $event)">帽子を載せてください</p>
+        <p v-on:mousemove="changeMousePotision(3, $event)">帽子を載せてください<span v-on:mousemove.stop="">反応しないでください</span></p>
+        <a v-on:click.prevent href="https://google.com">Google</a>
+
         <p>X:{{x}}, y:{{y}}</p>
 
     </div>
@@ -32,6 +34,9 @@
                 changeMousePotision:function(divideNumber, event) {
                     this.x = event.clientX / divideNumber;
                     this.y = event.clientY / divideNumber;
+                },
+                noEvent: function(event) {
+                   event.preventDefault();
                 }
             }
         })
