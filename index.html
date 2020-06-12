@@ -10,8 +10,8 @@
 
     <div id="app">
         <p>現在{{number}}回クリックされています</p>
-        <button v-on:click="countUp">CountUp</button>
-        <p v-on:mousemove="changeMousePotision">帽子を載せてください</p>
+        <button v-on:click="countUp(3)">CountUp</button>
+        <p v-on:mousemove="changeMousePotision(3, $event)">帽子を載せてください</p>
         <p>X:{{x}}, y:{{y}}</p>
 
     </div>
@@ -26,15 +26,12 @@
                 y:0
             },
             methods: {
-                countUp: function() {
-                    this.number += 1
+                countUp: function(times) {
+                    this.number += 1 * times
                 },
-                changeMousePotision:function(event) {
-                    this.x = event.clientX;
-                    this.y = event.clientY;
-                    
-
-
+                changeMousePotision:function(divideNumber, event) {
+                    this.x = event.clientX / divideNumber;
+                    this.y = event.clientY / divideNumber;
                 }
             }
         })
