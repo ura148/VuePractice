@@ -16,6 +16,8 @@
 
         <p>X:{{x}}, y:{{y}}</p>
 
+        <input type="text" v-on:keyup.enter="myAlert">
+
     </div>
     
 
@@ -37,6 +39,9 @@
                 },
                 noEvent: function(event) {
                    event.preventDefault();
+                },
+                myAlert() {
+                    alert('アラート！');
                 }
             }
         })
