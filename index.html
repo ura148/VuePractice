@@ -9,15 +9,8 @@
     <script src="vue.js"></script>
 
     <div id="app">
-        <p>現在{{number}}回クリックされています</p>
-        <button v-on:click="countUp(3)">CountUp</button>
-        <p v-on:mousemove="changeMousePotision(3, $event)">帽子を載せてください<span v-on:mousemove.stop="">反応しないでください</span></p>
-        <a v-on:click.prevent href="https://google.com">Google</a>
-
-        <p>X:{{x}}, y:{{y}}</p>
-
-        <input type="text" v-on:keyup.enter="myAlert">
-
+        <input type="text" v-model="message">
+        <h1>{{message}}</h1>
     </div>
     
 
@@ -25,28 +18,9 @@
         new Vue ({
             el: '#app',
             data: {
-                number: 0,
-                x:0,
-                y:0
-            },
-            methods: {
-                countUp: function(times) {
-                    this.number += 1 * times
-                },
-                changeMousePotision:function(divideNumber, event) {
-                    this.x = event.clientX / divideNumber;
-                    this.y = event.clientY / divideNumber;
-                },
-                noEvent: function(event) {
-                   event.preventDefault();
-                },
-                myAlert() {
-                    alert('アラート！');
-                }
+               message: 'こんにちは'
             }
         })
     </script>
 </body>
-
-
 </html>
