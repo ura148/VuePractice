@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <script src="vue.js"></script>
 
     <div id="app">
-        <p>{{ counter }}</p>
-       <button @click="counter += 1">+1</button>
-        <p>{{lessThanThreeComputed}}</p>
-       
+        <h1 :class="classObject">Hello</h1>
+        <button @click="isActive = !isActive">切り替え</button>
     </div>
     
 
@@ -20,20 +19,15 @@
         new Vue ({
             el: '#app',
             data: {
-               counter: 0
+               isActive: true
             },
             computed: {
-                lessThanThreeComputed: function() {
-                    return this.counter > 3 ? '３より上' : '３以下'
-                }
-            },
-            watch: {
-                counter: function() {
-                    const vm = this;
-                    setTimeout(function() {
-                        vm.counter = 0
-                    }, 3000)
-                }
+               classObject: function() {
+                   return {
+                    red: this.isActive,
+                    'bg-blue': !this.isActive
+                   }
+               } 
             }
         })
     </script>
