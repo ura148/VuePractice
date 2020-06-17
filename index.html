@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +10,9 @@
     <script src="vue.js"></script>
 
     <div id="app">
-        <template v-if="ok">
-            <p>Hello</p>
-            <p>Good bye</p>
-            <p>おはよう</p>
-        </template>
-        <button @click="ok = !ok">ボタン</button>
+        <ul>
+            <li v-for="fruit in fruits">{{ fruit }}</li>
+        </ul>
     </div>
     
 
@@ -23,7 +20,7 @@
         new Vue ({
             el: '#app',
             data: {
-                ok: true,
+                fruits: ['apple', 'banana', 'orange']
             }
         })
     </script>
