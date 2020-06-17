@@ -11,6 +11,7 @@
 
     <div id="app">
         <p v-if="ok">OK!</p>
+        <p v-else-if="maybeOK">maybe OK</p>
         <p v-else>Not OK</p>
 
     </div>
@@ -21,6 +22,7 @@
             el: '#app',
             data: {
                 ok: false,
+                maybeOK: true
             }
         })
     </script>
