@@ -10,7 +10,7 @@
     <script src="vue.js"></script>
 
     <div id="app">
-        <h1 :style="[styleObject, baseStyles]">Hello</h1>
+        <p v-if="ok">OK!</p>
     </div>
     
 
@@ -18,13 +18,7 @@
         new Vue ({
             el: '#app',
             data: {
-               styleObject: {
-                color: 'red',
-                'background-color': 'blue'
-               },
-               baseStyles: {
-                   fontSize: '60px'
-               }
+                ok: true,
             }
         })
     </script>
