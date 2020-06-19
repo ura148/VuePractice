@@ -9,28 +9,31 @@
 <body>
     <script src="vue.js"></script>
 
-    <div id="app">
-        <div v-for="fruit in fruits" :key="fruit">
-            <p>{{ fruit }}</p>
-            <input type="text">
-        </div>
+    <div id="app1">   
+        <p>{{ message }}</p> 
+    </div>
 
-        <button @click="remove">先頭を削除</button>
+    <div id="app2">
+        <p>{{ message }}</p>
     </div>
     
 
     <script>
         new Vue ({
-            el: '#app',
+            el: '#app1',
             data: {
-                fruits: ['apple', 'banana', 'orange'],
-            },
-            methods: {
-                remove: function() {
-                    this.fruits.shift()
-                }
+                message: 'インスタンス1'
+            }
+        })
+
+        new Vue ({
+            el: '#app2',
+            data: {
+                message: 'インスタンス2'
             }
         })
     </script>
+
+   
 </body>
 </html>
