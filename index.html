@@ -18,17 +18,18 @@
         
 
     <script>
+        let data = {
+            message: 'こんにちは',
+            name: 'uraura'
+        }
         let vm = new Vue ({
             el: '#app',
-            data: {
-                message: 'こんにちは'
-            }
+            data: data
         })
 
-        vm.message = 'changed'
-
-        vm.name = '名前は'
-
+        console.log(vm);
+        console.log(data === vm.$data);
+        
     </script>
 
    
