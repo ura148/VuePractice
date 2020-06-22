@@ -12,8 +12,11 @@
     <div id="app">   
         <p>{{ message }}</p> 
         <p>{{ name }}</p>
+        <p>{{ myData }}</p>
         <button @click="message = 'ボタンから変更'">変更</button>
     </div>
+
+    <div id="app2"></div>
 
         
 
@@ -24,11 +27,22 @@
         }
         let vm = new Vue ({
             el: '#app',
-            data: data
+            data: data,
+            myData: function() {
+                return this.$data;
+            }
         })
 
-        console.log(vm);
-        console.log(data === vm.$data);
+        vm.$mount('#app')
+
+        new Vue({
+            el: '#app2',
+            data: {
+                name: 'うら'
+            },
+            template: '<h1>こんにちは、{{ name }}</h1>'
+        })
+
         
     </script>
 
