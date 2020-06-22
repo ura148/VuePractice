@@ -21,15 +21,20 @@
         <h1>こんにちは、{{ name }}</h1>
         <button @click="name = 'urauraTaro'">名前を変更</button>
         <button @click="destroy">インスタンスを破壊</button>
+        <hello></hello>
     </div>
-
-        
 
     <script>
         let data = {
             message: 'こんにちは',
             name: 'uraura'
         }
+
+        Vue.component('hello', {
+            template: '<p>こんにちは</p>'
+        });
+
+
         let vm = new Vue ({
             el: '#app',
             data: data,
@@ -91,8 +96,6 @@
                 }
             }
         })
-
-        
 
         
     </script>
