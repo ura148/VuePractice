@@ -9,28 +9,97 @@
 <body>
     <script src="vue.js"></script>
 
-    <div id="app">
-        <div v-for="fruit in fruits" :key="fruit">
-            <p>{{ fruit }}</p>
-            <input type="text">
-        </div>
-
-        <button @click="remove">先頭を削除</button>
+    <div id="app">   
+        <p>{{ message }}</p> 
+        <p>{{ name }}</p>
+        <button @click="message = 'ボタンから変更'">変更</button>
     </div>
-    
+
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4">
+        <h1>こんにちは、{{ name }}</h1>
+        <button @click="name = 'urauraTaro'">名前を変更</button>
+        <button @click="destroy">インスタンスを破壊</button>
+        <hello></hello>
+    </div>
 
     <script>
-        new Vue ({
+        let data = {
+            message: 'こんにちは',
+            name: 'uraura'
+        }
+
+        Vue.component('hello', {
+            template: '<p>こんにちは</p>'
+        });
+
+
+        let vm = new Vue ({
             el: '#app',
+            data: data,
+            myData: function() {
+                return this.$data;
+            }
+        })
+
+        vm.$mount('#app')
+
+        new Vue({
             data: {
-                fruits: ['apple', 'banana', 'orange'],
+                name: 'うら'
+            },
+            template: '<h1>こんにちは、{{ name }}</h1>'
+        }).$mount('#app2')
+
+        new Vue({
+            data: {
+                name: 'うら'
+            },
+            render: function(createElement) {
+                return createElement('h1', 'こんにちは、' + this.name);
+            }
+        }).$mount('#app3')
+
+        new Vue({
+            el: '#app4',
+            data:{
+                name: 'よしぴー'
+            },
+            beforeCreate: function() {
+                console.log('beforeCreate');
+            },
+            created: function() {
+                console.log('Created');
+            },
+            beforeMount: function() {
+                console.log('beforeMount');
+            },
+            mounted: function() {
+                console.log('mounted');
+            },
+            beforeUpdata: function() {
+                console.log('beforeUpdata');
+            },
+            updated: function() {
+                console.log('updated');
+            },
+            beforeDestroy: function(){
+                console.log('beforeDestroy');
+            },
+            destroyed: function() {
+                console.log('destroyed');
             },
             methods: {
-                remove: function() {
-                    this.fruits.shift()
+                destroy: function() {
+                    this.$destroy()
                 }
             }
         })
+
+        
     </script>
+
+   
 </body>
 </html>
